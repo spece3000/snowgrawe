@@ -1,0 +1,12 @@
+main{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+}
+iframe{
+    height: 500px;
+    width: 800px;
+    margin: 20px 0;
+}
