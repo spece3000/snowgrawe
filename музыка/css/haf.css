@@ -1,6 +1,14 @@
-body, p, a{
+@font-face {
+    font-family: 'rotonda';
+    src: url('../fonts/Rotonda-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+body, p, a, span {
     margin: 0;
     text-decoration: none;
+    font-family: 'rotonda', sans-serif;
 }
 body{
     display: flex;

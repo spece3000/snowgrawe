@@ -1,0 +1,40 @@
+main{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+}
+.songer{
+    background-color: #1F1F1F;
+    border-radius: 20px;
+    width: 700px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1;
+    margin: 10px 0;
+}
+.songer_right{
+    margin: auto 0;
+    color: white;
+    font-size: 2rem;
+    word-break: break-all;
+}
+.songer_left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.songer_left span {
+    white-space: nowrap;
+    font-size: 40px;
+    color: white;
+}
+.songer_text-wrapper{
+    width: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
