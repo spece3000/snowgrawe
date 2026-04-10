@@ -1,0 +1,58 @@
+main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+        ". . a . ." 
+        ". b . c ." 
+        "d . . . e" 
+        ". f . g ." 
+        ". . h . .";
+    gap: 10px;
+    padding: 20px;
+    min-height: 75vh;
+    position: relative;
+}
+.ganr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.2s;
+    will-change: transform;
+    user-select: none;
+    position: relative;
+    z-index: 5;
+}
+.ganr.moving {
+    z-index: 100;
+    filter: drop-shadow(0 0 15px #B7FFFF);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+}
+.ganr img {
+    width: 150px;
+    height: auto;
+    pointer-events: none;
+}
+.ganr p {
+    font-size: 2rem;
+    color: white;
+    margin-top: 8px;
+    pointer-events: none;
+}
+.a { grid-area: a; }
+.b { grid-area: b; }
+.c { grid-area: c; }
+.d { grid-area: d; }
+.e { grid-area: e; }
+.f { grid-area: f; }
+.g { grid-area: g; }
+.h { grid-area: h; }
+.ganr:hover {
+    filter: brightness(1.2);
+}
+main.dimmed .ganr:not(.moving) {
+    opacity: 0.7;
+    transition: opacity 1s;
+}
