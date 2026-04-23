@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSICPAD</title>
-    <link rel="stylesheet" href="css/haf.css"> 
+    <title>MUSICPAD · Треки</title>
+    <link rel="stylesheet" href="css/haf.css">
+    <link rel="stylesheet" href="css/treck.css">
 </head>
 <body>
     <header>
         <a class="img"><img class="logo" src="img/Music.png" alt="logo"></a>
         <ul>
             <a href="treck.html"><li class="header_text tut">треки</li></a>
-            <a href="albom.html"><li class="header_text">альбомы</li></a>
             <a href="songer.html"><li class="header_text">исполнители</li></a>
             <a href="search.html"><li class="header_text">поиск</li></a>
             <a href="ganr.html"><li class="header_text">жанры</li></a>
@@ -20,9 +19,21 @@
         </ul>
         <a class="img"><img id="profil" src="img/Vector.png" alt="prof"></a>
     </header>
-    <main>
 
+    <main>
+        <!-- Фильтры -->
+        <div id="filterPanel" class="filter-panel">
+            <span class="filter-label">Выбранные критерии:</span>
+            <div id="filterTags" class="filter-tags"></div>
+        </div>
+
+        <!-- Подходящие треки -->
+        <div id="tracksContainer" class="tracks-list"></div>
+
+        <!-- Популярное -->
+        <div id="popularContainer" class="tracks-list"></div>
     </main>
+
     <footer>
         <ul>
             <a><li class="footer_text">авторские права</li></a>
@@ -30,5 +41,8 @@
             <a><li class="footer_text">контакты</li></a>
         </ul>
     </footer>
+
+    <script src="js/filter.js"></script>
+    <script src="js/treck.js"></script>
 </body>
 </html>

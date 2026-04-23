@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSICPAD</title>
-    <link rel="stylesheet" href="css/haf.css"> 
-    <link rel="stylesheet" href="css/songer.css"> 
+    <title>MUSICPAD · Исполнители</title>
+    <link rel="stylesheet" href="css/haf.css">
+    <link rel="stylesheet" href="css/songer.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
     <header>
         <a class="img"><img class="logo" src="img/Music.png" alt="logo"></a>
         <ul>
             <a href="treck.html"><li class="header_text">треки</li></a>
-            <a href="albom.html"><li class="header_text">альбомы</li></a>
             <a href="songer.html"><li class="header_text tut">исполнители</li></a>
             <a href="search.html"><li class="header_text">поиск</li></a>
             <a href="ganr.html"><li class="header_text">жанры</li></a>
@@ -21,43 +20,24 @@
         </ul>
         <a class="img"><img id="profil" src="img/Vector.png" alt="prof"></a>
     </header>
+
     <main>
-        <div class="songer">
+        <!-- Только те исполнители, что были у вас -->
+        <div class="songer" data-artist="AC/DC">
             <div class="songer_left">
                 <img src="img/dc.png" alt="AC/DC">
                 <div class="songer_text-wrapper"><span>AC/DC</span></div>
             </div>
             <p class="songer_right">блаблаблабалалбалбалалалабалалааалба........</p>
         </div>
-        <div class="songer">
+        <div class="songer" data-artist="КИНО">
             <div class="songer_left">
                 <img src="img/kino.png" alt="kino">
                 <div class="songer_text-wrapper"><span>КИНО</span></div>
             </div>
             <p class="songer_right">блаблаблабалалбалбалалалабалалааалба........</p>
         </div>
-        <div class="songer">
-            <div class="songer_left">
-                <img src="img/lazar.png" alt="sergey">
-                <div class="songer_text-wrapper"><span>Сергей Лазарев</span></div>
-            </div>
-            <p class="songer_right">блаблаблабалалбалбалалалабалалааалба........</p>
-        </div>
-        <div class="songer">
-            <div class="songer_left">
-                <img src="img/dc.png" alt="AC/DC">
-                <div class="songer_text-wrapper"><span>AC/DC</span></div>
-            </div>
-            <p class="songer_right">блаблаблабалалбалбалалалабалалааалба........</p>
-        </div>
-        <div class="songer">
-            <div class="songer_left">
-                <img src="img/kino.png" alt="kino">
-                <div class="songer_text-wrapper"><span>КИНО</span></div>
-            </div>
-            <p class="songer_right">блаблаблабалалбалбалалалабалалааалба........</p>
-        </div>
-        <div class="songer">
+        <div class="songer" data-artist="Сергей Лазарев">
             <div class="songer_left">
                 <img src="img/lazar.png" alt="sergey">
                 <div class="songer_text-wrapper"><span>Сергей Лазарев</span></div>
@@ -65,6 +45,16 @@
             <p class="songer_right">блаблаблабалалбалбалалалабалалааалба........</p>
         </div>
     </main>
+
+    <!-- Модальное окно -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-box">
+            <p>Фильтр добавлен</p>
+            <div id="modalFilterName" class="modal-filter-name"></div>
+            <button class="modal-close-btn" id="modalCloseBtn">OK</button>
+        </div>
+    </div>
+
     <footer>
         <ul>
             <a><li class="footer_text">авторские права</li></a>
@@ -72,6 +62,29 @@
             <a><li class="footer_text">контакты</li></a>
         </ul>
     </footer>
-    <script src="js/adaptive_text.js"></script>
+
+<script src="js/filter.js"></script>
+<script>
+    const overlay = document.getElementById('modalOverlay');
+    const modalName = document.getElementById('modalFilterName');
+    const closeBtn = document.getElementById('modalCloseBtn');
+
+    function showModal(name) {
+        modalName.textContent = name;
+        overlay.classList.add('active');
+    }
+    closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active'); });
+
+    document.querySelectorAll('.songer').forEach(card => {
+        card.addEventListener('click', () => {
+            const artist = card.dataset.artist;
+            if (artist) {
+                const added = addArtistFilter(artist);
+                if (added) showModal(artist);
+            }
+        });
+    });
+</script>
 </body>
 </html>

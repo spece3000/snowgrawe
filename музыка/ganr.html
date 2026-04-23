@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSICPAD</title>
-    <link rel="stylesheet" href="css/haf.css"> 
+    <title>MUSICPAD · Жанры</title>
+    <link rel="stylesheet" href="css/haf.css">
     <link rel="stylesheet" href="css/ganr.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
     <header>
         <a class="img"><img class="logo" src="img/Music.png" alt="logo"></a>
         <ul>
             <a href="treck.html"><li class="header_text">треки</li></a>
-            <a href="albom.html"><li class="header_text">альбомы</li></a>
             <a href="songer.html"><li class="header_text">исполнители</li></a>
             <a href="search.html"><li class="header_text">поиск</li></a>
             <a href="ganr.html"><li class="header_text tut">жанры</li></a>
@@ -21,40 +20,51 @@
         </ul>
         <a class="img"><img id="profil" src="img/Vector.png" alt="prof"></a>
     </header>
-<main id="genreMain">
-        <div class="ganr a">
+
+    <main id="genreMain">
+        <div class="ganr a" data-genre="pop">
             <img src="img/ganr/pop.png" alt="поп">
             <p>поп</p>
         </div>
-        <div class="ganr b">
+        <div class="ganr b" data-genre="rock">
             <img src="img/ganr/rock.png" alt="рок">
             <p>рок</p>
         </div>
-        <div class="ganr c">
+        <div class="ganr c" data-genre="jazz">
             <img src="img/ganr/jazz.png" alt="джаз">
             <p>джаз</p>
         </div>
-        <div class="ganr d">
+        <div class="ganr d" data-genre="blus">
             <img src="img/ganr/bluz.png" alt="блюз">
             <p>блюз</p>
         </div>
-        <div class="ganr e">
+        <div class="ganr e" data-genre="reggy">
             <img src="img/ganr/reggy.png" alt="регги">
             <p>регги</p>
         </div>
-        <div class="ganr f">
+        <div class="ganr f" data-genre="cantry">
             <img src="img/ganr/cantry.png" alt="кантри">
             <p>кантри</p>
         </div>
-        <div class="ganr g">
+        <div class="ganr g" data-genre="classic">
             <img src="img/ganr/classick.png" alt="классическая">
             <p>классическая</p>
         </div>
-        <div class="ganr h">
+        <div class="ganr h" data-genre="hip-hop">
             <img src="img/ganr/hip-hop.png" alt="хип-хоп">
             <p>хип-хоп</p>
         </div>
     </main>
+
+    <!-- Модальное окно -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-box">
+            <p>Фильтр добавлен</p>
+            <div id="modalFilterName" class="modal-filter-name"></div>
+            <button class="modal-close-btn" id="modalCloseBtn">OK</button>
+        </div>
+    </div>
+
     <footer>
         <ul>
             <a><li class="footer_text">авторские права</li></a>
@@ -62,6 +72,43 @@
             <a><li class="footer_text">контакты</li></a>
         </ul>
     </footer>
+    <!-- Модальное окно -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-box">
+            <p>Фильтр добавлен</p>
+            <div id="modalFilterName" class="modal-filter-name"></div>
+            <button class="modal-close-btn" id="modalCloseBtn">OK</button>
+        </div>
+    </div>
+
+    <footer>...</footer>
+
+    <script src="js/filter.js"></script>
+    <script>
+        const overlay = document.getElementById('modalOverlay');
+        const modalName = document.getElementById('modalFilterName');
+        const closeBtn = document.getElementById('modalCloseBtn');
+
+        function showModal(name) {
+            modalName.textContent = name;
+            overlay.classList.add('active');
+        }
+
+        closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+
+        // Эта функция вызывается из krug.js после завершения анимации
+        function onGenreAnimationComplete(item) {
+            const genre = item.dataset.genre;
+            if (genre) {
+                const added = addGenreFilter(genre);
+                if (added) {
+                    showModal(genre);
+                }
+            }
+        }
+    </script>
     <script src="js/krug.js"></script>
-</body>
 </html>
