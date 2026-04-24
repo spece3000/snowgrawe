@@ -1,4 +1,3 @@
-/* Затемнение фона */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -18,8 +17,6 @@
     opacity: 1;
     pointer-events: auto;
 }
-
-/* Окно */
 .modal-box {
     background: #1e1e1e;
     border: 1px solid #3a3a3a;
@@ -36,19 +33,16 @@
 .modal-overlay.active .modal-box {
     transform: translateY(0);
 }
-
 .modal-box p {
     margin: 0 0 6px;
     font-size: 1.2rem;
 }
-
 .modal-filter-name {
     color: #B7FFFF;
     font-weight: 700;
     font-size: 1.5rem;
     margin: 4px 0 16px;
 }
-
 .modal-close-btn {
     background: #4a4a4a;
     border: none;

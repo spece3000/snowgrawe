@@ -72,4 +72,17 @@ footer ul{
 .footer_text{
     font-size: 2rem;
     color: #7C7C7C;
+    cursor: pointer;
+}
+.footer_text:hover{
+    color: #e7e7e7;
+}
+@media (max-width: 650px) {
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    footer{
+        height: 150px;
+    }
 }

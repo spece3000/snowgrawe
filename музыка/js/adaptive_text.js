@@ -12,5 +12,4 @@ function fitTextToContainer(spanElement) {
         spanElement.style.fontSize = fontSize + 'px';
     }
 }
-
 document.querySelectorAll('.songer_text-wrapper span').forEach(fitTextToContainer);

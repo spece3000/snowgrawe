@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/haf.css">
     <link rel="stylesheet" href="css/ganr.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="shortcut icon" href="img/Music.png" base target="_top" >
 </head>
 <body>
     <header>
@@ -56,7 +57,6 @@
         </div>
     </main>
 
-    <!-- Модальное окно -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal-box">
             <p>Фильтр добавлен</p>
@@ -72,17 +72,6 @@
             <a><li class="footer_text">контакты</li></a>
         </ul>
     </footer>
-    <!-- Модальное окно -->
-    <div id="modalOverlay" class="modal-overlay">
-        <div class="modal-box">
-            <p>Фильтр добавлен</p>
-            <div id="modalFilterName" class="modal-filter-name"></div>
-            <button class="modal-close-btn" id="modalCloseBtn">OK</button>
-        </div>
-    </div>
-
-    <footer>...</footer>
-
     <script src="js/filter.js"></script>
     <script>
         const overlay = document.getElementById('modalOverlay');
@@ -98,8 +87,6 @@
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) overlay.classList.remove('active');
         });
-
-        // Эта функция вызывается из krug.js после завершения анимации
         function onGenreAnimationComplete(item) {
             const genre = item.dataset.genre;
             if (genre) {

@@ -19,7 +19,6 @@
         if (isAnimating) return;
         const topItem = getItemByArea('a');
         if (clickedItem === topItem) {
-            // Если кликнули по верхнему – анимации нет, но фильтр всё равно добавим
             if (typeof onGenreAnimationComplete === 'function') {
                 onGenreAnimationComplete(clickedItem);
             }
@@ -81,8 +80,6 @@
         clickedItem.classList.remove('moving');
         main.classList.remove('dimmed');
         isAnimating = false;
-
-        // Вызов внешней функции после завершения анимации
         if (typeof onGenreAnimationComplete === 'function') {
             onGenreAnimationComplete(clickedItem);
         }

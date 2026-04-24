@@ -27,7 +27,6 @@
 
     const symbols = ['нет'];
 
-    // --- Функции фильтрации и отрисовки ---
     function renderFilters() {
         const { artists, genres } = getFilters();
         filterTagsDiv.innerHTML = '';
@@ -46,7 +45,6 @@
             filterTagsDiv.appendChild(tag);
         });
 
-        // Обработчики удаления
         document.querySelectorAll('.tag-remove').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -117,11 +115,9 @@
         renderFilters();
         const { filtered, rest } = getFilteredTracks();
 
-        // Очищаем контейнеры
         container.innerHTML = '';
         popularContainer.innerHTML = '';
 
-        // Блок "Подходящие треки" (если есть фильтры и есть результаты)
         if (filtered.length > 0) {
             const heading = document.createElement('h3');
             heading.className = 'section-title';
@@ -136,7 +132,6 @@
             container.innerHTML += '<p class="empty-msg">Нет треков по заданным критериям</p>';
         }
 
-        // Блок "Популярное" (все остальные)
         if (rest.length > 0) {
             const heading = document.createElement('h3');
             heading.className = 'section-title';
@@ -146,7 +141,6 @@
         }
     }
 
-    // Добавим обработчик удаления фильтров на будущие элементы (делегирование)
     filterTagsDiv.addEventListener('click', (e) => {
         if (e.target.classList.contains('tag-remove')) {
             const type = e.target.dataset.type;
@@ -156,7 +150,5 @@
             renderAll();
         }
     });
-
-    // Первоначальная отрисовка
     renderAll();
 })();
